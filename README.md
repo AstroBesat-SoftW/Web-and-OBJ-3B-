@@ -1,5 +1,6 @@
 # Web-and-OBJ-3B-
-add car.obj
+add car.glb
+
 
 <img width="361" height="794" alt="image" src="https://github.com/user-attachments/assets/d9321478-8a14-4757-bbab-f102a71b5b53" />
 
