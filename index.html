@@ -2,118 +2,209 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <!-- Mobil ekranlarda tam ekran ve zoom yapılmamasını sağlayan viewport ayarı -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-    <title>3D Araba Modeli</title>
+    <title>3D Araç Vitrini</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --bg-color: #0f172a;
+            --panel-bg: rgba(15, 23, 42, 0.6);
+            --panel-border: rgba(255, 255, 255, 0.1);
+            --text-color: #f8fafc;
+        }
+
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #2c3e50;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
             touch-action: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
         }
         
         #canvas-container {
             width: 100vw;
             height: 100vh;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
         
-        /* --- Yükleme Ekranı Tasarımı --- */
+        /* --- Cam Efekti (Glassmorphism) --- */
+        .glass-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--panel-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Modern Yükleme Ekranı --- */
         #loading-screen {
             position: absolute;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #1a252f;
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #ffffff;
             z-index: 9999;
+            transition: opacity 0.5s ease;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            border-top-color: #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        .loader-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
+        .progress-container {
+            width: 250px;
+            height: 6px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
         }
 
-        /* --- Üst Başlık Tasarımı --- */
-        #top-title {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 16px;
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            border-radius: 10px;
+            transition: width 0.2s ease;
+        }
+
+        #loading-text {
+            font-size: 14px;
+            color: #94a3b8;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            text-align: center;
-            z-index: 10;
-            /* Yazıya tıklanmasını engelleyerek altındaki 3D modelin dönmesini sağlarız */
-            pointer-events: none; 
-            backdrop-filter: blur(4px); /* Şık bir cam bulanıklığı efekti */
-            white-space: nowrap;
         }
 
-        /* --- Zoom Butonları Tasarımı --- */
-        #zoom-controls {
+        /* --- Profesyonel Üst Bar (Header) --- */
+        #top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 10;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .brand {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .action-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- Alt Kontrol Paneli --- */
+        #control-panel {
             position: absolute;
             bottom: 30px;
-            right: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 30px;
             z-index: 10;
         }
 
-        .zoom-btn {
-            width: 50px;
-            height: 50px;
+        .ctrl-btn {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #2c3e50;
-            border: none;
-            font-size: 28px;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             user-select: none;
-            /* Mobilde çift tıklama ile zoom yapmayı (zoom-in) engeller */
-            touch-action: manipulation; 
+            touch-action: manipulation;
             transition: all 0.2s ease;
         }
 
-        .zoom-btn:active {
-            background-color: #ffffff;
-            transform: scale(0.9);
+        .ctrl-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
+
+        .ctrl-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .ctrl-btn:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        .ctrl-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        /* Animasyon için helper */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        .loading-pulse { animation: pulse 1.5s infinite; }
+
     </style>
     <!-- Three.js kütüphaneleri -->
     <script type="importmap">
         {
             "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
             }
         }
     </script>
@@ -122,86 +213,153 @@
 
     <!-- Yükleme Ekranı -->
     <div id="loading-screen">
-        <div class="spinner"></div>
-        <div id="loading-text">%0 Yüklendi</div>
+        <div class="loader-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            3D Araç Yükleniyor
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div id="loading-text" class="loading-pulse">Veriler optimize ediliyor...</div>
     </div>
 
-    <!-- Üst Başlık -->
-    <div id="top-title">Aracımızın 3 boyutlu gösterimi</div>
-
-    <!-- Yakınlaştırma / Uzaklaştırma Butonları -->
-    <div id="zoom-controls">
-        <button class="zoom-btn" id="zoom-in">+</button>
-        <button class="zoom-btn" id="zoom-out">-</button>
-    </div>
+    <!-- Üst Bar (Header) -->
+    <header id="top-bar" class="glass-panel">
+        <div class="brand">
+            <!-- Araba İkonu -->
+            <svg viewBox="0 0 24 24">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                <circle cx="7" cy="17" r="2"/>
+                <path d="M9 17h6"/>
+                <circle cx="17" cy="17" r="2"/>
+            </svg>
+            Premium Vitrin
+        </div>
+        <button class="action-btn" title="Bilgi" id="info-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </button>
+    </header>
 
     <!-- 3D Modelin Gösterileceği Alan -->
     <div id="canvas-container"></div>
 
+    <!-- Alt Kontrol Paneli -->
+    <div id="control-panel" class="glass-panel">
+        <button class="ctrl-btn" id="zoom-in" title="Yakınlaştır">
+            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        </button>
+        <button class="ctrl-btn" id="zoom-out" title="Uzaklaştır">
+            <svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+        </button>
+        <button class="ctrl-btn" id="auto-rotate" title="Otomatik Döndür">
+            <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+        </button>
+        <button class="ctrl-btn" id="reset-view" title="Kamerayı Sıfırla">
+            <svg viewBox="0 0 24 24"><path d="M3 12h4v-2H5.41C6.73 7.31 9.17 6 12 6c3.08 0 5.68 2.01 6.55 4.79l1.91-.63C19.26 6.58 15.93 4 12 4 8.74 4 5.92 5.97 4.54 8.65L3 7.11V12zm18 0h-4v2h1.59c-1.32 2.69-3.76 4-6.59 4-3.08 0-5.68-2.01-6.55-4.79l-1.91.63C4.74 17.42 8.07 20 12 20c3.26 0 6.08-1.97 7.46-4.65L21 16.89V12z"/></svg>
+        </button>
+    </div>
+
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // Performans için GLTFLoader kullanıyoruz
 
         // Sahne Ayarları
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 5, 10);
+        
+        // Başlangıç kamera pozisyonu (Sıfırlama işlemi için saklıyoruz)
+        const INITIAL_CAMERA_POS = new THREE.Vector3(0, 5, 10);
+        camera.position.copy(INITIAL_CAMERA_POS);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Performans optimizasyonu
+        // Daha gerçekçi renkler için tonlama ayarı
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // Işıklandırma
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        // Profesyonel Işıklandırma Ortamı
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(10, 20, 10);
-        scene.add(directionalLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(5, 10, 7);
+        scene.add(dirLight);
+
+        const backLight = new THREE.DirectionalLight(0xcceeff, 0.5); // Hafif mavimsi arka ışık
+        backLight.position.set(-5, 5, -7);
+        scene.add(backLight);
 
         // Kontroller
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
-        controls.enablePan = false; // Mobilde modelin ekrandan kayıp gitmesini engeller
+        controls.enablePan = false; 
+        controls.minDistance = 2; // Çok fazla yakınlaşmayı engelle
+        controls.maxDistance = 20; // Çok fazla uzaklaşmayı engelle
 
-        // OBJ Modelini Yükleme
+        // GLTF Modelini Yükleme (.obj yerine çok daha hızlı olan .glb)
         const loadingScreen = document.getElementById('loading-screen');
         const loadingText = document.getElementById('loading-text');
-        const loader = new OBJLoader();
+        const progressBar = document.getElementById('progress-bar');
         
+        const loader = new GLTFLoader();
+        
+        // NOT: Kullanıcı car.obj dosyasını car.glb dosyasına çevirmiş olmalıdır.
         loader.load(
-            'car.obj',
-            function (object) {
-                // Modeli merkeze oturtma işlemi
+            'car.glb',
+            function (gltf) {
+                const object = gltf.scene;
+                
+                // Modeli merkeze oturtma
                 const box = new THREE.Box3().setFromObject(object);
                 const center = box.getCenter(new THREE.Vector3());
                 object.position.sub(center); 
                 scene.add(object);
                 
-                // Yükleme tamamlanınca spinner'ı kapat
-                loadingScreen.style.display = 'none';
+                // Yükleme tamamlanınca spinner'ı yavaşça gizle
+                progressBar.style.width = '100%';
+                loadingText.innerText = 'Yükleme Tamamlandı!';
+                loadingText.classList.remove('loading-pulse');
+                
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 500);
             },
             function (xhr) {
                 if (xhr.lengthComputable) {
                     const percentComplete = (xhr.loaded / xhr.total) * 100;
+                    progressBar.style.width = percentComplete + '%';
                     loadingText.innerText = '%' + Math.round(percentComplete) + ' Yüklendi';
-                } else {
-                    loadingText.innerText = 'Model Yükleniyor...';
                 }
             },
             function (error) {
                 console.error('Hata:', error);
-                loadingText.innerText = 'Yükleme Hatası!';
-                loadingText.style.color = '#e74c3c';
+                loadingText.innerText = 'Model bulunamadı. Lütfen dosyanın car.glb olduğundan emin olun.';
+                loadingText.style.color = '#ef4444';
+                loadingText.classList.remove('loading-pulse');
             }
         );
 
-        // Butonlarla Yakınlaştırma ve Uzaklaştırma (Zoom in / Zoom out) İşlemleri
+        // --- Buton İşlevleri ---
+
+        // Zoom İşlevleri
+        const zoomStep = 1.5;
         document.getElementById('zoom-in').addEventListener('click', () => {
-            // Kamerayı objeye doğru %20 yaklaştır
             const target = controls.target.clone();
             const diff = camera.position.clone().sub(target);
             diff.multiplyScalar(0.8); 
@@ -209,11 +367,40 @@
         });
 
         document.getElementById('zoom-out').addEventListener('click', () => {
-            // Kamerayı objeden %20 uzaklaştır
             const target = controls.target.clone();
             const diff = camera.position.clone().sub(target);
             diff.multiplyScalar(1.2); 
             camera.position.copy(target).add(diff);
+        });
+
+        // Otomatik Döndürme
+        let isAutoRotate = false;
+        const autoRotateBtn = document.getElementById('auto-rotate');
+        autoRotateBtn.addEventListener('click', () => {
+            isAutoRotate = !isAutoRotate;
+            controls.autoRotate = isAutoRotate;
+            controls.autoRotateSpeed = 2.0;
+            if(isAutoRotate) {
+                autoRotateBtn.classList.add('active');
+            } else {
+                autoRotateBtn.classList.remove('active');
+            }
+        });
+
+        // Kamerayı Sıfırlama
+        document.getElementById('reset-view').addEventListener('click', () => {
+            camera.position.copy(INITIAL_CAMERA_POS);
+            controls.target.set(0,0,0);
+            if(isAutoRotate) {
+                isAutoRotate = false;
+                controls.autoRotate = false;
+                autoRotateBtn.classList.remove('active');
+            }
+        });
+        
+        // Üst bar bilgi butonu
+        document.getElementById('info-btn').addEventListener('click', () => {
+             alert('Bu uygulama aracın 360 derece detaylı gösterimini sağlar. Ekranda sürükleyerek döndürebilirsiniz.');
         });
 
         // Ekran Boyutu Değiştiğinde Kamerayı Güncelle
