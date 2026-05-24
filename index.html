@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <!-- Mobil ekranlarda tam ekran ve zoom yapılmamasını sağlayan viewport ayarı -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>3D Araba Modeli</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #2c3e50;
+            touch-action: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+        
+        /* --- Yükleme Ekranı Tasarımı --- */
+        #loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a252f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top-color: #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Üst Başlık Tasarımı --- */
+        #top-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: center;
+            z-index: 10;
+            /* Yazıya tıklanmasını engelleyerek altındaki 3D modelin dönmesini sağlarız */
+            pointer-events: none; 
+            backdrop-filter: blur(4px); /* Şık bir cam bulanıklığı efekti */
+            white-space: nowrap;
+        }
+
+        /* --- Zoom Butonları Tasarımı --- */
+        #zoom-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            border: none;
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            user-select: none;
+            /* Mobilde çift tıklama ile zoom yapmayı (zoom-in) engeller */
+            touch-action: manipulation; 
+            transition: all 0.2s ease;
+        }
+
+        .zoom-btn:active {
+            background-color: #ffffff;
+            transform: scale(0.9);
+        }
+    </style>
+    <!-- Three.js kütüphaneleri -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Yükleme Ekranı -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <div id="loading-text">%0 Yüklendi</div>
+    </div>
+
+    <!-- Üst Başlık -->
+    <div id="top-title">Aracımızın 3 boyutlu gösterimi</div>
+
+    <!-- Yakınlaştırma / Uzaklaştırma Butonları -->
+    <div id="zoom-controls">
+        <button class="zoom-btn" id="zoom-in">+</button>
+        <button class="zoom-btn" id="zoom-out">-</button>
+    </div>
+
+    <!-- 3D Modelin Gösterileceği Alan -->
+    <div id="canvas-container"></div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+        // Sahne Ayarları
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 5, 10);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Işıklandırma
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(10, 20, 10);
+        scene.add(directionalLight);
+
+        // Kontroller
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enablePan = false; // Mobilde modelin ekrandan kayıp gitmesini engeller
+
+        // OBJ Modelini Yükleme
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingText = document.getElementById('loading-text');
+        const loader = new OBJLoader();
+        
+        loader.load(
+            'car.obj',
+            function (object) {
+                // Modeli merkeze oturtma işlemi
+                const box = new THREE.Box3().setFromObject(object);
+                const center = box.getCenter(new THREE.Vector3());
+                object.position.sub(center); 
+                scene.add(object);
+                
+                // Yükleme tamamlanınca spinner'ı kapat
+                loadingScreen.style.display = 'none';
+            },
+            function (xhr) {
+                if (xhr.lengthComputable) {
+                    const percentComplete = (xhr.loaded / xhr.total) * 100;
+                    loadingText.innerText = '%' + Math.round(percentComplete) + ' Yüklendi';
+                } else {
+                    loadingText.innerText = 'Model Yükleniyor...';
+                }
+            },
+            function (error) {
+                console.error('Hata:', error);
+                loadingText.innerText = 'Yükleme Hatası!';
+                loadingText.style.color = '#e74c3c';
+            }
+        );
+
+        // Butonlarla Yakınlaştırma ve Uzaklaştırma (Zoom in / Zoom out) İşlemleri
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            // Kamerayı objeye doğru %20 yaklaştır
+            const target = controls.target.clone();
+            const diff = camera.position.clone().sub(target);
+            diff.multiplyScalar(0.8); 
+            camera.position.copy(target).add(diff);
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            // Kamerayı objeden %20 uzaklaştır
+            const target = controls.target.clone();
+            const diff = camera.position.clone().sub(target);
+            diff.multiplyScalar(1.2); 
+            camera.position.copy(target).add(diff);
+        });
+
+        // Ekran Boyutu Değiştiğinde Kamerayı Güncelle
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Animasyon Döngüsü
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
