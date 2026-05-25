@@ -95,42 +95,42 @@ nav ul li a:hover{color:var(--cyan)}
 
 /* Arka plan — oda */
 .room-bg{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg, #1a2235 0%, #0d1520 50%, #080e18 100%);
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, #1a2235 0%, #0d1520 50%, #080e18 100%);
 }
 /* Duvar çizgisi */
 .room-wall-line{
-  position:absolute;top:42%;left:0;right:0;height:1px;
-  background:rgba(255,255,255,.06);
+  position:absolute;top:42%;left:0;right:0;height:1px;
+  background:rgba(255,255,255,.06);
 }
 /* Zemin */
 .room-floor{
-  position:absolute;bottom:0;left:0;right:0;top:42%;
-  background:linear-gradient(180deg,#0d1520,#060a10);
+  position:absolute;bottom:0;left:0;right:0;top:42%;
+  background:linear-gradient(180deg,#0d1520,#060a10);
 }
 /* Zemin perspektif çizgileri */
 .room-floor::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-  background-size:40px 40px;
-  transform:perspective(300px) rotateX(60deg);
-  transform-origin:top center;
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  transform:perspective(300px) rotateX(60deg);
+  transform-origin:top center;
 }
 
 /* ── MASA (gerçekçi) ── */
 .obj-table{
-  position:absolute;bottom:8%;left:6%;width:40%;
-  z-index:3;
+  position:absolute;bottom:8%;left:6%;width:40%;
+  z-index:3;
 }
 .table-top{
-  width:100%;height:18px;
-  background:linear-gradient(180deg,#8B5A2B,#6B4020);
-  border-radius:3px 3px 0 0;
-  box-shadow:0 2px 8px rgba(0,0,0,.5);
-  position:relative;
+  width:100%;height:18px;
+  background:linear-gradient(180deg,#8B5A2B,#6B4020);
+  border-radius:3px 3px 0 0;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  position:relative;
 }
 .table-top::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.08);border-radius:3px 3px 0 0}
 .table-leg{position:absolute;bottom:-55px;width:8px;background:linear-gradient(90deg,#7B4A18,#5a3410);border-radius:0 0 2px 2px}
@@ -141,16 +141,16 @@ nav ul li a:hover{color:var(--cyan)}
 
 /* ── ŞİŞE (gerçekçi SVG) ── */
 .obj-bottle{
-  position:absolute;
-  bottom:calc(8% + 80px);right:26%;
-  z-index:4;
-  width:28px;
+  position:absolute;
+  bottom:calc(8% + 80px);right:26%;
+  z-index:4;
+  width:28px;
 }
 .bottle-body{
-  width:100%;height:70px;
-  background:linear-gradient(90deg,rgba(100,180,220,.7),rgba(140,210,250,.9),rgba(100,180,220,.7));
-  border-radius:4px 4px 6px 6px;
-  position:relative;box-shadow:inset -4px 0 8px rgba(0,0,0,.3),2px 2px 8px rgba(0,0,0,.4);
+  width:100%;height:70px;
+  background:linear-gradient(90deg,rgba(100,180,220,.7),rgba(140,210,250,.9),rgba(100,180,220,.7));
+  border-radius:4px 4px 6px 6px;
+  position:relative;box-shadow:inset -4px 0 8px rgba(0,0,0,.3),2px 2px 8px rgba(0,0,0,.4);
 }
 .bottle-body::before{content:'';position:absolute;top:6px;left:5px;width:6px;height:40px;background:rgba(255,255,255,.3);border-radius:3px}
 .bottle-body::after{content:'WATER';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);font-family:'Share Tech Mono',monospace;font-size:5px;color:rgba(255,255,255,.5);letter-spacing:1px}
@@ -159,8 +159,8 @@ nav ul li a:hover{color:var(--cyan)}
 
 /* ── KİŞİ / İNSAN SİLUETİ ── */
 .obj-person{
-  position:absolute;bottom:8%;right:12%;
-  z-index:3;width:52px;
+  position:absolute;bottom:8%;right:12%;
+  z-index:3;width:52px;
 }
 .person-head{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#d4956a,#b87840);margin:0 auto;box-shadow:0 2px 6px rgba(0,0,0,.5)}
 .person-body{width:38px;height:60px;background:linear-gradient(180deg,#2a4a7f,#1a3060);border-radius:6px 6px 2px 2px;margin:2px auto 0;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.5)}
@@ -329,590 +329,388 @@ footer{padding:38px;text-align:center;border-top:1px solid var(--border);font-fa
 <div class="progress-bar" id="pb"></div>
 
 <nav>
-  <div class="logo">ARAÇ — SYS</div>
-  <ul>
-    <li><a href="#hero">BAŞLANGIÇ</a></li>
-    <li><a href="#car-3d-section">ARAÇ 3D</a></li>
-    <li><a href="#cam-section">KAMERA / YOLO</a></li>
-    <li><a href="#esp-section">ESP8266</a></li>
-    <li><a href="#final">ÖZET</a></li>
-  </ul>
+  <div class="logo">Aracımızın Mimarisi</div>
+  <ul>
+    <li><a href="#hero">BAŞLANGIÇ</a></li>
+    <li><a href="#car-3d-section">ARAÇ 3D</a></li>
+    <li><a href="#cam-section">KAMERA / YOLO</a></li>
+    <li><a href="#esp-section">ESP8266</a></li>
+    <li><a href="#final">ÖZET</a></li>
+  </ul>
 </nav>
 
 <div class="side-nav">
-  <div class="side-dot active" data-t="hero"></div>
-  <div class="side-dot" data-t="car-3d-section"></div>
-  <div class="side-dot" data-t="cam-section"></div>
-  <div class="side-dot" data-t="esp-section"></div>
-  <div class="side-dot" data-t="final"></div>
+  <div class="side-dot active" data-t="hero"></div>
+  <div class="side-dot" data-t="car-3d-section"></div>
+  <div class="side-dot" data-t="cam-section"></div>
+  <div class="side-dot" data-t="esp-section"></div>
+  <div class="side-dot" data-t="final"></div>
 </div>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
-  <div class="grid-bg"></div>
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-label">// OTONOM ROBOT PLATFORMU — v2.0</div>
-  <h1 class="hero-title">ARACI<br><span>TANIYALIM</span></h1>
-  <p class="hero-sub">ESP32-CAM · YOLOv · ESP8266 · Wi-Fi KONTROL</p>
-  <div class="scroll-hint">
-    <div class="scroll-arrow"></div>
-    <span>KAYDIRIN</span>
-  </div>
+  <div class="grid-bg"></div>
+  <canvas id="hero-canvas"></canvas>
+  
+  <h1 class="hero-title">ARACI<br><span>TANIYALIM</span></h1>
+ <center> <p class="hero-sub">ESP32-CAM · YOLOv · ESP8266 · Wi-Fi KONTROL</p>
+  </center><div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+    <span>KAYDIRIN</span>
+  </div>
 </section>
 
 <!-- ═══ 3D CAR ═══ -->
 <section id="car-3d-section">
-  <div class="car-3d-sticky">
-    <canvas id="three-canvas"></canvas>
-    <!-- Loading -->
-    <div id="loadOverlay">
-      <div class="load-txt">MODEL YÜKLENİYOR...</div>
-      <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
-      <div class="load-txt" id="loadPct">0%</div>
-    </div>
-    <!-- HUD -->
-    <div class="car-hud">
-      <div class="hud-corner tl"></div><div class="hud-corner tr"></div>
-      <div class="hud-corner bl"></div><div class="hud-corner br"></div>
-      <div class="section-badge" id="badge">
-        <h2>ARAÇ MİMARİSİ</h2>
-        <p>// SCROLL EDEREK 360° KEŞFET</p>
-      </div>
-      <div class="phase-caption" id="ph0"><h3>OTONOM ROBOT PLATFORMU</h3><p>Gerçek 3D model — 4 tekerlekli diferansiyel sürüş. Ahşap şasi, sarı jantlar, çoklu elektronik modüller.</p></div>
-      <div class="phase-caption" id="ph1"><h3>SAĞ TARAF — SÜRÜŞ SİSTEMİ</h3><p>DC motorlar ve sarı alüminyum jantlar. Bağımsız PWM hız kontrolü ile anlık dönüş kabiliyeti.</p></div>
-      <div class="phase-caption" id="ph2"><h3>ARKA PANEL — GÜÇ ÜNİTESİ</h3><p>18650 lityum pil paketi ve motor sürücü kartı entegrasyonu. 7.4V nominal güç çıkışı.</p></div>
-      <div class="phase-caption" id="ph3"><h3>SOL TARAF — KONTROL BİRİMİ</h3><p>ESP8266 Wi-Fi modülü ve ESP32-CAM. Gerçek zamanlı 2.4GHz kablosuz iletişim.</p></div>
-      <div class="phase-caption" id="ph4"><h3>ÖN GÖRÜNÜM — KAMERA AÇISI</h3><p>ESP32-CAM lens açısı. YOLOv nesne tespiti algoritması ile 30fps görüntü analizi.</p></div>
-      <div class="ann-pin" id="p-cam"><div class="ln"></div><div class="dot"></div><div class="lbl">ESP32-CAM · OV2640</div></div>
-      <div class="ann-pin" id="p-esp"><div class="lbl">ESP8266 · 2.4GHz</div><div class="dot"></div><div class="ln"></div></div>
-      <div class="ann-pin" id="p-mot"><div class="ln"></div><div class="dot"></div><div class="lbl">DC MOTOR · L298N</div></div>
-      <div class="rot-indicator" id="rotInd">ROT: 0°</div>
-    </div>
-  </div>
+  <div class="car-3d-sticky">
+    <canvas id="three-canvas"></canvas>
+    <!-- Loading -->
+    <div id="loadOverlay">
+      <div class="load-txt">MODEL YÜKLENİYOR...</div>
+      <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
+      <div class="load-txt" id="loadPct">0%</div>
+    </div>
+    <!-- HUD -->
+    <div class="car-hud">
+      <div class="hud-corner tl"></div><div class="hud-corner tr"></div>
+      <div class="hud-corner bl"></div><div class="hud-corner br"></div>
+      <div class="section-badge" id="badge">
+        <h2>ARAÇ MİMARİSİ</h2>
+        <p>// SCROLL EDEREK 360° KEŞFET</p>
+      </div>
+      <div class="phase-caption" id="ph0"><h3>OTONOM ROBOT PLATFORMU</h3><p>Gerçek 3D model — 4 tekerlekli diferansiyel sürüş. Ahşap şasi, sarı jantlar, çoklu elektronik modüller.</p></div>
+      <div class="phase-caption" id="ph1"><h3>ARABA İÇİNDE — SÜRÜŞ SİSTEMİ</h3><p>DC motorlar ve sarı alüminyum jantlar. Bağımsız PWM hız kontrolü ile anlık dönüş kabiliyeti.</p></div>
+      <div class="phase-caption" id="ph2"><h3>ÜST KISIMDA PİL YUVASI — GÜÇ ÜNİTESİ</h3><p>Pil paketi ve motor sürücü kartı entegrasyonu. 6.0V nominal güç çıkışı.</p></div>
+      <div class="phase-caption" id="ph3"><h3>ARKA ÜST — KONTROL BİRİMİ</h3><p>ESP8266 Wi-Fi modülü Kontrol dediğim bu kartta oluyor. arabanın hareketi ve kontrol takip sistemi ve 2.4GHz kablosuz iletişim.</p></div>
+      <div class="phase-caption" id="ph4"><h3>ÖN GÖRÜNÜM — KAMERA AÇISI</h3><p>ESP32-CAM lens açısı. YOLOv nesne tespiti algoritması ile 30fps görüntü analizi.</p></div>
+      <div class="ann-pin" id="p-cam"><div class="ln"></div><div class="dot"></div><div class="lbl">ESP32-CAM · OV2640</div></div>
+      <div class="ann-pin" id="p-esp"><div class="lbl">ESP8266 · 2.4GHz</div><div class="dot"></div><div class="ln"></div></div>
+      <div class="ann-pin" id="p-mot"><div class="ln"></div><div class="dot"></div><div class="lbl">DC MOTOR · L298N</div></div>
+      <div class="rot-indicator" id="rotInd">ROT: 0°</div>
+    </div>
+  </div>
 </section>
 
-<!--
-<section id="cam-section">
-  <div class="cam-sticky">
-    <div class="cam-bg"></div>
-
-    <div class="cam-frame" id="camFrame">
-      <div class="cam-inner">
-       
-        <div class="room-bg"></div>
-        <div class="room-wall-line"></div>
-        <div class="room-floor"></div>
-
-       
-        <div class="obj-table">
-          <div class="table-items">
-         
-            <div class="obj-mug" style="position:relative;bottom:0;left:0;right:0">
-              <div class="mug-steam"><div class="steam-line"></div><div class="steam-line"></div><div class="steam-line"></div></div>
-              <div class="mug-body"><div class="mug-handle"></div></div>
-            </div>
-      
-            <div class="obj-book" style="position:relative;bottom:0;left:0">
-              <div class="book"></div>
-            </div>
-          </div>
-          <div class="table-top"></div>
-          <div class="table-leg l"></div>
-          <div class="table-leg r"></div>
-        </div>
-
-       
-        <div class="obj-bottle">
-          <div class="bottle-cap"></div>
-          <div class="bottle-neck"></div>
-          <div class="bottle-body"></div>
-        </div>
-
-
-        <div class="obj-person">
-          <div class="person-head"></div>
-          <div class="person-body"></div>
-          <div class="person-legs"><div class="person-leg"></div><div class="person-leg"></div></div>
-          <div class="person-shadow"></div>
-        </div>
-
-      
-        <div class="bbox" id="bb-bot"><div class="bbox-lbl">şişe 94%</div></div>
-        <div class="bbox" id="bb-per"><div class="bbox-lbl">kişi 87%</div></div>
-        <div class="bbox" id="bb-tbl"><div class="bbox-lbl">masa 79%</div></div>
-        <div class="bbox" id="bb-mug"><div class="bbox-lbl">kupa 82%</div></div>
-
-     
-        <div class="crosshair"><div class="ch-h"></div><div class="ch-v"></div></div>
-
-   
-        <div class="mini-map" id="miniMap">
-          <div class="map-dot" style="top:60%;left:45%"></div>
-          <div class="map-obj" style="top:20%;left:30%;background:#00ff88;border-radius:50%"></div>
-          <div class="map-obj" style="top:35%;left:65%;background:#ff6b00"></div>
-          <div class="map-obj" style="top:50%;left:20%;background:#a855f7"></div>
-        </div>
-
-        <div class="cam-hud2">
-          <div class="cc tl"></div><div class="cc tr"></div>
-          <div class="cc bl"></div><div class="cc br"></div>
-          <div class="cam-scan"></div>
-          <div class="rec-tag"><div class="rec-dot"></div>REC</div>
-          <div class="cam-res">ESP32-CAM · 800×600</div>
-          <div class="frm-ctr" id="frmCtr">FRAME: 0000</div>
-          <div class="fps-ctr">30 FPS</div>
-        </div>
-
-       
-        <div class="conf-panel" id="confPanel">
-          <div class="conf-panel-title">DETECTION CONFIDENCE</div>
-          <div class="conf-row"><span>şişe</span><div class="conf-track"><div class="conf-fill" id="cf1" style="width:0%;background:#00ff88"></div></div><span class="conf-pct" style="color:#00ff88">94%</span></div>
-          <div class="conf-row"><span>kişi</span><div class="conf-track"><div class="conf-fill" id="cf2" style="width:0%;background:#ff6b00"></div></div><span class="conf-pct" style="color:#ff6b00">87%</span></div>
-          <div class="conf-row"><span>kupa</span><div class="conf-track"><div class="conf-fill" id="cf3" style="width:0%;background:#00cfff"></div></div><span class="conf-pct" style="color:#00cfff">82%</span></div>
-          <div class="conf-row"><span>masa</span><div class="conf-track"><div class="conf-fill" id="cf4" style="width:0%;background:#a855f7"></div></div><span class="conf-pct" style="color:#a855f7">79%</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cam-info" id="camInfo">
-      <h2>YAPAY ZEKA NESNE TESPİTİ</h2>
-      <p>ESP32-CAM modülü üzerinden anlık görüntü akışı. YOLOv algoritması ile gerçek zamanlı nesne tespiti ve sınıflandırma. 800ms → 150ms optimize gecikme.</p>
-      <div class="cam-tags">
-        <span class="tag g">ŞİŞE 94%</span>
-        <span class="tag o">KİŞİ 87%</span>
-        <span class="tag c">KUPA 82%</span>
-        <span class="tag p">MASA 79%</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="esp-section">
-  <div class="esp-sticky">
-    <div class="esp-bg"></div>
-    <div class="esp-wrap" id="espWrap">
-      <div class="esp-visual">
-        <div class="pcb">
-          <div class="pcb-grid"></div>
-          <div class="chip chip-main"></div>
-          <div class="chip chip-sm c1"></div><div class="chip chip-sm c2"></div>
-          <div class="chip chip-sm c3"></div><div class="chip chip-sm c4"></div>
-          <div class="pins pins-l"><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div></div>
-          <div class="pins pins-r"><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div></div>
-          <div class="tr tr1"></div><div class="tr tr2"></div><div class="tr tr3"></div>
-          <div class="dpkt dp1"></div><div class="dpkt dp2"></div>
-          <div class="wifi-anim"><div class="wv"></div><div class="wv"></div><div class="wv"></div></div>
-        </div>
-      </div>
-      <div class="esp-info">
-        <div class="sub">// WI-FI KONTROL MODÜLÜ</div>
-        <h2>ESP8266</h2>
-        <p>Aracın kablosuz kontrol merkezini oluşturan ESP8266 modülü, 2.4GHz Wi-Fi üzerinden web dashboard ile gerçek zamanlı haberleşme sağlar. HTTP sunucusu olarak çalışarak motor ve sensör verilerini yönetir.</p>
-        <div class="esp-specs">
-          <div class="spec-item"><div class="key">İŞLEMCİ</div><div class="val">80/160 MHz</div></div>
-          <div class="spec-item"><div class="key">WI-FI</div><div class="val">802.11 b/g/n</div></div>
-          <div class="spec-item"><div class="key">GECİKME</div><div class="val">~150 ms</div></div>
-          <div class="spec-item"><div class="key">PROTOKOL</div><div class="val">HTTP / WS</div></div>
-          <div class="spec-item"><div class="key">GPIO</div><div class="val">17 Pin</div></div>
-          <div class="spec-item"><div class="key">FLASH</div><div class="val">4 MB</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="stats">
-  <div class="stats-inner">
-    <div class="stat-card" data-d="0"><div class="stat-num"><span id="c1">0</span><span class="unit">ms</span></div><div class="stat-lbl">OPTİMİZE GECİKME</div></div>
-    <div class="stat-card" data-d="200"><div class="stat-num"><span id="c2">0</span><span class="unit">fps</span></div><div class="stat-lbl">VİDEO AKIŞI</div></div>
-    <div class="stat-card" data-d="400"><div class="stat-num"><span id="c3">0</span><span class="unit">%</span></div><div class="stat-lbl">ALGILAMA DOĞRULUĞU</div></div>
-  </div>
-</section>
-
-
-<section id="final">
-  <div class="final-bg"></div>
-  <div class="final-glow"></div>
-  <canvas id="final-canvas"></canvas>
-  <div class="final-txt" id="finalTxt">
-    <h2>HAZIR — DEVREDE</h2>
-    <p>// OTONOM · AKILLI · BAĞLI</p>
-  </div>
-</section>
--->
 <footer>© 2026 Besat Ç. — OTONOM ROBOT PLATFORMU // ALL SYSTEMS NOMINAL</footer>
 
 <script>
 // ══════════════════════════════════════════════════════
-// THREE.JS — GLB LOADER + SCROLL 360°
+// THREE.JS — GLB LOADER + KESİNTİSİZ SİNEMATİK SCROLL
 // ══════════════════════════════════════════════════════
 (function(){
-  const canvas = document.getElementById('three-canvas');
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  const canvas = document.getElementById('three-canvas');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.3;
+  renderer.outputEncoding = THREE.sRGBEncoding;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.01, 1000);
-  camera.position.set(0, 1.8, 5);
-  camera.lookAt(0, 0, 0);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.01, 1000);
+  camera.position.set(0, 1.8, 5);
+  
+  // -- KAMERA VE ROTASYON İÇİN HEDEF DEĞİŞKENLERİ --
+  let baseCamY = 1.8, baseCamZ = 5, baseLookY = 0.5, dist = 5;
+  let curCamX = 0, curCamY = 1.8, curCamZ = 5;
+  let targetCamX = 0, targetCamY = 1.8, targetCamZ = 5;
+  let targetRotX = 0, curRotX = 0;
 
-  function resize(){
-    const w = canvas.parentElement.clientWidth;
-    const h = canvas.parentElement.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w/h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
+  // Yumuşak geçiş (Linear Interpolation) fonksiyonu
+  function lerp(start, end, t) {
+    return start * (1 - t) + end * t;
+  }
 
-  // ── LIGHTS ──
-  scene.add(new THREE.AmbientLight(0x223344, 2.5));
+  function resize(){
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
-  const sun = new THREE.DirectionalLight(0xffffff, 3.5);
-  sun.position.set(4, 8, 5); sun.castShadow = true;
-  sun.shadow.mapSize.width = 2048; sun.shadow.mapSize.height = 2048;
-  scene.add(sun);
+  // ── IŞIKLAR ──
+  scene.add(new THREE.AmbientLight(0x223344, 2.5));
 
-  const cyanL = new THREE.PointLight(0x00e5ff, 5, 20);
-  cyanL.position.set(-4, 3, 4); scene.add(cyanL);
+  const sun = new THREE.DirectionalLight(0xffffff, 3.5);
+  sun.position.set(4, 8, 5); sun.castShadow = true;
+  sun.shadow.mapSize.width = 2048; sun.shadow.mapSize.height = 2048;
+  scene.add(sun);
 
-  const goldL = new THREE.PointLight(0xf5c842, 4, 16);
-  goldL.position.set(5, 2, -3); scene.add(goldL);
+  const cyanL = new THREE.PointLight(0x00e5ff, 5, 20);
+  cyanL.position.set(-4, 3, 4); scene.add(cyanL);
 
-  const rimL = new THREE.DirectionalLight(0x00e5ff, 2);
-  rimL.position.set(-6, 1, -6); scene.add(rimL);
+  const goldL = new THREE.PointLight(0xf5c842, 4, 16);
+  goldL.position.set(5, 2, -3); scene.add(goldL);
 
-  const fillL = new THREE.PointLight(0xffffff, 1.5, 15);
-  fillL.position.set(0, 5, -5); scene.add(fillL);
+  const rimL = new THREE.DirectionalLight(0x00e5ff, 2);
+  rimL.position.set(-6, 1, -6); scene.add(rimL);
 
-  // ── FLOOR ──
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20, 20),
-    new THREE.MeshStandardMaterial({color:0x050a10, roughness:0.15, metalness:0.9})
-  );
-  floor.rotation.x = -Math.PI/2;
-  floor.position.y = -0.01;
-  floor.receiveShadow = true;
-  scene.add(floor);
+  const fillL = new THREE.PointLight(0xffffff, 1.5, 15);
+  fillL.position.set(0, 5, -5); scene.add(fillL);
 
-  // Glow ring
-  const gRing = new THREE.Mesh(
-    new THREE.RingGeometry(1.6, 2.2, 64),
-    new THREE.MeshBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.10, side:THREE.DoubleSide})
-  );
-  gRing.rotation.x = -Math.PI/2; gRing.position.y = 0.005;
-  scene.add(gRing);
+  // ── ZEMİN ──
+  const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(20, 20),
+    new THREE.MeshStandardMaterial({color:0x050a10, roughness:0.15, metalness:0.9})
+  );
+  floor.rotation.x = -Math.PI/2;
+  floor.position.y = -0.01;
+  floor.receiveShadow = true;
+  scene.add(floor);
 
-  // Grid lines on floor
-  const gridHelper = new THREE.GridHelper(16, 16, 0x00e5ff, 0x00e5ff);
-  gridHelper.material.opacity = 0.04; gridHelper.material.transparent = true;
-  gridHelper.position.y = 0.002;
-  scene.add(gridHelper);
+  const gRing = new THREE.Mesh(
+    new THREE.RingGeometry(1.6, 2.2, 64),
+    new THREE.MeshBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.10, side:THREE.DoubleSide})
+  );
+  gRing.rotation.x = -Math.PI/2; gRing.position.y = 0.005;
+  scene.add(gRing);
 
-  scene.fog = new THREE.FogExp2(0x060a0f, 0.03);
+  const gridHelper = new THREE.GridHelper(16, 16, 0x00e5ff, 0x00e5ff);
+  gridHelper.material.opacity = 0.04; gridHelper.material.transparent = true;
+  gridHelper.position.y = 0.002;
+  scene.add(gridHelper);
 
-  // ── LOAD GLB ──
-  let carModel = null;
-  const loader = new THREE.GLTFLoader();
-  const loadBar = document.getElementById('loadBar');
-  const loadPct = document.getElementById('loadPct');
-  const loadOverlay = document.getElementById('loadOverlay');
+  scene.fog = new THREE.FogExp2(0x060a0f, 0.03);
 
-  loader.load(
-    'car_.glb',
-    function(gltf){
-      carModel = gltf.scene;
+  // ── GLB YÜKLEME ──
+  let carModel = null;
+  const loader = new THREE.GLTFLoader();
+  const loadBar = document.getElementById('loadBar');
+  const loadPct = document.getElementById('loadPct');
+  const loadOverlay = document.getElementById('loadOverlay');
 
-     // Auto-scale & center
-      const box3 = new THREE.Box3().setFromObject(carModel);
-      const size = box3.getSize(new THREE.Vector3());
-      const center = box3.getCenter(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z);
-      
-      // Senin belirlediğin gibi modeli fiziksel olarak 1.0 birime ölçeklendiriyoruz
-      const scale = 1.0 / maxDim;
-      carModel.scale.setScalar(scale);
-      carModel.position.sub(center.multiplyScalar(scale));
-      
-      // Sit on floor
-      const box2 = new THREE.Box3().setFromObject(carModel);
-      carModel.position.y -= box2.min.y;
+  loader.load(
+    'car_.glb',
+    function(gltf){
+      carModel = gltf.scene;
 
-   
+      const box3 = new THREE.Box3().setFromObject(carModel);
+      const size = box3.getSize(new THREE.Vector3());
+      const center = box3.getCenter(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      
+      const scale = 1.0 / maxDim;
+      carModel.scale.setScalar(scale);
+      carModel.position.sub(center.multiplyScalar(scale));
+      
+      const box2 = new THREE.Box3().setFromObject(carModel);
+      carModel.position.y -= box2.min.y;
 
-      carModel.traverse(child => {
-        if(child.isMesh){
-          child.castShadow = true;
-          child.receiveShadow = true;
-          if(child.material){
-            child.material.envMapIntensity = 1.0;
-          }
-        }
-      });
+      carModel.traverse(child => {
+        if(child.isMesh){
+          child.castShadow = true;
+          child.receiveShadow = true;
+          if(child.material){
+            child.material.envMapIntensity = 1.0;
+          }
+        }
+      });
 
-      scene.add(carModel);
+      scene.add(carModel);
 
-        // --- ASIL GÖRÜNÜMÜ KÜÇÜLTECEK OLAN KAMERA AYARI ---
-      const box3b = new THREE.Box3().setFromObject(carModel);
-      const sz = box3b.getSize(new THREE.Vector3());
-      
-      // Kamerayı modelden ne kadar uzaklaştıracağımızı buradan ayarlıyoruz.
-      // Ekranda daha KÜÇÜK görünmesi için buradaki 3.0 değerini artırabilirsin (örneğin 4.0 veya 5.0).
-      // Daha BÜYÜK görünmesi için düşürebilirsin (örneğin 1.5 veya 2.0).
-      const dist = sz.length() * 2.0; 
+      const box3b = new THREE.Box3().setFromObject(carModel);
+      const sz = box3b.getSize(new THREE.Vector3());
+      
+      dist = sz.length() * 2.0; 
+      baseCamY = sz.y * 0.7;
+      baseCamZ = dist;
+      baseLookY = sz.y * 0.3;
 
-      camera.position.set(0, sz.y * 0.7, dist);
-      camera.lookAt(0, sz.y * 0.3, 0);
+      curCamY = targetCamY = baseCamY;
+      curCamZ = targetCamZ = baseCamZ;
 
-      // Hide loading
-      setTimeout(()=>{ loadOverlay.classList.add('hidden'); }, 400);
-    },
-    function(xhr){
-      if(xhr.total){
-        const pct = Math.round(xhr.loaded/xhr.total*100);
-        loadBar.style.width = pct + '%';
-        loadPct.textContent = pct + '%';
-      }
-    },
-    function(err){
-      console.warn('GLB load error:', err);
-      loadOverlay.classList.add('hidden');
-    }
-  );
+      setTimeout(()=>{ loadOverlay.classList.add('hidden'); }, 400);
+    },
+    function(xhr){
+      if(xhr.total){
+        const pct = Math.round(xhr.loaded/xhr.total*100);
+        loadBar.style.width = pct + '%';
+        loadPct.textContent = pct + '%';
+      }
+    },
+    function(err){
+      console.warn('GLB load error:', err);
+      loadOverlay.classList.add('hidden');
+    }
+  );
 
-  // ── SCROLL DRIVEN ROTATION ──
-  const section = document.getElementById('car-3d-section');
-  let targetRotY = 0, curRotY = 0;
-  const badge = document.getElementById('badge');
-  const phases = [0,1,2,3,4].map(i=>document.getElementById('ph'+i));
-  const pCam = document.getElementById('p-cam');
-  const pEsp = document.getElementById('p-esp');
-  const pMot = document.getElementById('p-mot');
-  const rotInd = document.getElementById('rotInd');
+  // ── SİNEMATİK SCROLL VE KAMERA GEÇİŞLERİ ──
+  const section = document.getElementById('car-3d-section');
+  let targetRotY = 0, curRotY = 0;
+  const badge = document.getElementById('badge');
+  const phases = [0,1,2,3,4].map(i=>document.getElementById('ph'+i));
+  const pCam = document.getElementById('p-cam');
+  const pEsp = document.getElementById('p-esp');
+  const pMot = document.getElementById('p-mot');
+  const rotInd = document.getElementById('rotInd');
 
-  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 
-  function updateScroll(){
-    const sy = window.scrollY;
-    const top = section.offsetTop;
-    const h = section.offsetHeight - window.innerHeight;
-    const p = clamp((sy - top) / h, 0, 1);
-    targetRotY = p * Math.PI * 2; // Full 360°
+  function updateScroll(){
+    const sy = window.scrollY;
+    const top = section.offsetTop;
+    const h = section.offsetHeight - window.innerHeight;
+    const p = clamp((sy - top) / h, 0, 1);
 
-    badge.classList.toggle('vis', p > 0.02);
-    rotInd.textContent = 'ROT: ' + Math.round(p * 360) + '°';
+    // BÖLÜM 1: Giriş ve Etrafında Dönme (0% -> 38%)
+    if (p < 0.38) {
+      const t = p / 0.38; // Kendi içindeki ilerleme (0'dan 1'e)
+      targetRotY = lerp(0, Math.PI * 2, t); // Tam 1 tur (360 derece) dön
+      targetCamY = baseCamY;
+      targetCamZ = baseCamZ;
+    } 
+    // BÖLÜM 2: Pil ve Güç Ünitesi (38% -> 58%) -> "Üstten Ön Kısım"
+    else if (p < 0.58) {
+      const t = (p - 0.38) / 0.20; 
+      targetRotY = Math.PI * 2; // Araç dönmeyi bırakıp öne bakmaya devam eder
+      // Kamera yavaşça yukarı doğru çıkar ve modele yaklaşır (kuşbakışı efekti)
+      targetCamY = lerp(baseCamY, dist * 0.9, t); 
+      targetCamZ = lerp(baseCamZ, dist * 0.2, t);
+    } 
+    // BÖLÜM 3: ESP8266 Kontrol Kartı (58% -> 78%) -> "Üstten Arka Uç"
+    else if (p < 0.78) {
+      const t = (p - 0.58) / 0.20;
+      // Aracı yavaşça 180 derece arkaya çeviriyoruz (pürüzsüz geçiş için)
+      targetRotY = lerp(Math.PI * 2, Math.PI * 3, t); 
+      // Kamera biraz aşağı ve geriye çekilerek arka tepeyi net görür
+      targetCamY = lerp(dist * 0.9, dist * 0.6, t); 
+      targetCamZ = lerp(dist * 0.2, dist * 0.8, t);
+    } 
+    // BÖLÜM 4: Kamera / Ön Görünüm (78% -> 100%) -> "Tam Önden"
+    else {
+      const t = (p - 0.78) / 0.22;
+      // Aracı tekrar 180 derece döndürüp tam öne alıyoruz
+      targetRotY = lerp(Math.PI * 3, Math.PI * 4, t);
+      // Kamera agresif bir şekilde aracın yüz hizasına iniyor
+      targetCamY = lerp(dist * 0.6, baseCamY * 0.6, t); 
+      targetCamZ = lerp(dist * 0.8, dist * 0.7, t);
+    }
 
-    const phRanges = [[0,.18],[.18,.38],[.38,.58],[.58,.78],[.78,1]];
-    phases.forEach((ph,i)=>{
-      const [s,e] = phRanges[i];
-      ph.classList.toggle('vis', p>=s && p<e);
-    });
+    badge.classList.toggle('vis', p > 0.02);
+    rotInd.textContent = 'ROT: ' + Math.round(p * 360) + '°';
 
-    pCam.classList.toggle('vis', p>0.08 && p<0.30);
-    pEsp.classList.toggle('vis', p>0.55 && p<0.76);
-    pMot.classList.toggle('vis', p>0.30 && p<0.56);
-  }
+    const phRanges = [[0,.18],[.18,.38],[.38,.58],[.58,.78],[.78,1]];
+    phases.forEach((ph,i)=>{
+      const [s,e] = phRanges[i];
+      ph.classList.toggle('vis', p>=s && p<e);
+    });
 
-  window.addEventListener('scroll', updateScroll, {passive:true});
-  updateScroll();
+    pCam.classList.toggle('vis', p>0.08 && p<0.30);
+    pEsp.classList.toggle('vis', p>0.55 && p<0.76);
+    pMot.classList.toggle('vis', p>0.30 && p<0.56);
+  }
 
-  // ── ANIMATE ──
-  let t2 = 0;
-  function animate(){
-    requestAnimationFrame(animate);
-    t2++;
+  window.addEventListener('scroll', updateScroll, {passive:true});
+  updateScroll();
 
-    // Smooth rotation
-    curRotY += (targetRotY - curRotY) * 0.055;
-    if(carModel) {
-      carModel.rotation.y = curRotY;
-      carModel.position.y += (Math.sin(t2*0.018)*0.04 - (carModel.position.y - 0)) * 0.05;
-    }
+  // ── ANİMASYON DÖNGÜSÜ ──
+  let t2 = 0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t2++;
 
-    // Animate lights
-    cyanL.position.x = Math.sin(t2*0.022)*5;
-    cyanL.position.z = Math.cos(t2*0.022)*4;
-    goldL.position.x = -Math.sin(t2*0.016)*5;
+    // Hedeflenen pozisyonlara "EASING" (yumuşatma) ile kayma
+    // Bu kısım scroll durduğunda kameranın tatlı bir ivmeyle yerine oturmasını sağlar.
+    curRotY += (targetRotY - curRotY) * 0.06;
+    curCamX += (targetCamX - curCamX) * 0.05;
+    curCamY += (targetCamY - curCamY) * 0.05;
+    curCamZ += (targetCamZ - curCamZ) * 0.05;
 
-    gRing.material.opacity = 0.07 + Math.sin(t2*0.025)*0.04;
+    camera.position.set(curCamX, curCamY, curCamZ);
+    camera.lookAt(0, baseLookY, 0); // Odak noktası hep sabit
 
-    renderer.render(scene, camera);
-  }
-  animate();
+    if(carModel) {
+      carModel.rotation.y = curRotY;
+      // Arabaya minik bir havada asılı kalma (hover) efekti
+      carModel.position.y += (Math.sin(t2*0.018)*0.04 - (carModel.position.y - 0)) * 0.05;
+    }
 
-  // ── FINAL CANVAS ──
-  (function(){
-    const fc = document.getElementById('final-canvas');
-    const fr = new THREE.WebGLRenderer({canvas:fc, antialias:true, alpha:true});
-    fr.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    fr.toneMapping = THREE.ACESFilmicToneMapping;
-    fr.toneMappingExposure = 1.5;
-    fr.shadowMap.enabled = true;
-    fr.outputEncoding = THREE.sRGBEncoding;
+    // Işıkları hareket ettir
+    cyanL.position.x = Math.sin(t2*0.022)*5;
+    cyanL.position.z = Math.cos(t2*0.022)*4;
+    goldL.position.x = -Math.sin(t2*0.016)*5;
 
-    const fs = new THREE.Scene();
-    const fc2 = new THREE.PerspectiveCamera(38, 1, 0.01, 1000);
-    fc2.position.set(0, 1.5, 5);
+    gRing.material.opacity = 0.07 + Math.sin(t2*0.025)*0.04;
 
-    function rfr(){
-      const el=fc.parentElement;
-      fr.setSize(el.clientWidth,el.clientHeight,false);
-      fc2.aspect=el.clientWidth/el.clientHeight;
-      fc2.updateProjectionMatrix();
-    }
-    rfr(); window.addEventListener('resize',rfr);
+    renderer.render(scene, camera);
+  }
+  animate();
 
-    fs.add(new THREE.AmbientLight(0x223344,2));
-    const fl1=new THREE.DirectionalLight(0xffffff,3.5); fl1.position.set(4,8,5); fl1.castShadow=true; fs.add(fl1);
-    const fl2=new THREE.PointLight(0x00e5ff,5,18); fl2.position.set(-4,3,4); fs.add(fl2);
-    const fl3=new THREE.PointLight(0xf5c842,4,14); fl3.position.set(4,2,-3); fs.add(fl3);
+  // ── FINAL EKRANI (Aynı kalıyor) ──
+  (function(){
+    const fc = document.getElementById('final-canvas');
+    const fr = new THREE.WebGLRenderer({canvas:fc, antialias:true, alpha:true});
+    fr.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    fr.toneMapping = THREE.ACESFilmicToneMapping;
+    fr.toneMappingExposure = 1.5;
+    fr.shadowMap.enabled = true;
+    fr.outputEncoding = THREE.sRGBEncoding;
 
-    const ffloor=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:0x050a10,roughness:0.12,metalness:0.95}));
-    ffloor.rotation.x=-Math.PI/2; ffloor.position.y=-0.01; fs.add(ffloor);
+    const fs = new THREE.Scene();
+    const fc2 = new THREE.PerspectiveCamera(38, 1, 0.01, 1000);
+    fc2.position.set(0, 1.5, 5);
 
-    const fRing=new THREE.Mesh(new THREE.RingGeometry(1.4,2.1,64),new THREE.MeshBasicMaterial({color:0xf5c842,transparent:true,opacity:0.12,side:THREE.DoubleSide}));
-    fRing.rotation.x=-Math.PI/2; fRing.position.y=0.005; fs.add(fRing);
+    function rfr(){
+      const el=fc.parentElement;
+      fr.setSize(el.clientWidth,el.clientHeight,false);
+      fc2.aspect=el.clientWidth/el.clientHeight;
+      fc2.updateProjectionMatrix();
+    }
+    rfr(); window.addEventListener('resize',rfr);
 
-    const fgrid=new THREE.GridHelper(16,16,0xf5c842,0xf5c842);
-    fgrid.material.opacity=0.04;fgrid.material.transparent=true;fgrid.position.y=0.002;fs.add(fgrid);
-    fs.fog=new THREE.FogExp2(0x060a0f,0.028);
+    fs.add(new THREE.AmbientLight(0x223344,2));
+    const fl1=new THREE.DirectionalLight(0xffffff,3.5); fl1.position.set(4,8,5); fl1.castShadow=true; fs.add(fl1);
+    const fl2=new THREE.PointLight(0x00e5ff,5,18); fl2.position.set(-4,3,4); fs.add(fl2);
+    const fl3=new THREE.PointLight(0xf5c842,4,14); fl3.position.set(4,2,-3); fs.add(fl3);
 
-    let fCar2=null;
-    // Wait for main model then clone
-    function tryClone(){
-      if(carModel){
-        fCar2=carModel.clone(true);
-        fCar2.rotation.y=Math.PI*0.2;
-        // Recompute position
-        const b=new THREE.Box3().setFromObject(fCar2);
-        fCar2.position.y-=b.min.y;
-        fCar2.traverse(c=>{if(c.isMesh){c.castShadow=true;c.receiveShadow=true;}});
-        fs.add(fCar2);
-        const sz=b.getSize(new THREE.Vector3());
-        fc2.position.set(0,sz.y*0.7,sz.length()*1.05);
-        fc2.lookAt(0,sz.y*0.3,0);
-      } else {
-        setTimeout(tryClone,500);
-      }
-    }
-    setTimeout(tryClone,1500);
+    const ffloor=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:0x050a10,roughness:0.12,metalness:0.95}));
+    ffloor.rotation.x=-Math.PI/2; ffloor.position.y=-0.01; fs.add(ffloor);
 
-    let ft=0;
-    function fa(){
-      requestAnimationFrame(fa);ft++;
-      if(fCar2){
-        fCar2.rotation.y+=0.007;
-        fCar2.position.y=Math.max(0,Math.sin(ft*0.02)*0.04);
-      }
-      fRing.material.opacity=0.10+Math.sin(ft*0.03)*0.06;
-      fl2.position.x=Math.sin(ft*0.025)*4;fl2.position.z=Math.cos(ft*0.025)*4;
-      fr.render(fs,fc2);
-    }
-    fa();
-  })();
+    const fRing=new THREE.Mesh(new THREE.RingGeometry(1.4,2.1,64),new THREE.MeshBasicMaterial({color:0xf5c842,transparent:true,opacity:0.12,side:THREE.DoubleSide}));
+    fRing.rotation.x=-Math.PI/2; fRing.position.y=0.005; fs.add(fRing);
+
+    const fgrid=new THREE.GridHelper(16,16,0xf5c842,0xf5c842);
+    fgrid.material.opacity=0.04;fgrid.material.transparent=true;fgrid.position.y=0.002;fs.add(fgrid);
+    fs.fog=new THREE.FogExp2(0x060a0f,0.028);
+
+    let fCar2=null;
+    function tryClone(){
+      if(carModel){
+        fCar2=carModel.clone(true);
+        fCar2.rotation.y=Math.PI*0.2;
+        const b=new THREE.Box3().setFromObject(fCar2);
+        fCar2.position.y-=b.min.y;
+        fCar2.traverse(c=>{if(c.isMesh){c.castShadow=true;c.receiveShadow=true;}});
+        fs.add(fCar2);
+        const sz=b.getSize(new THREE.Vector3());
+        fc2.position.set(0,sz.y*0.7,sz.length()*1.05);
+        fc2.lookAt(0,sz.y*0.3,0);
+      } else {
+        setTimeout(tryClone,500);
+      }
+    }
+    setTimeout(tryClone,1500);
+
+    let ft=0;
+    function fa(){
+      requestAnimationFrame(fa);ft++;
+      if(fCar2){
+        fCar2.rotation.y+=0.007;
+        fCar2.position.y=Math.max(0,Math.sin(ft*0.02)*0.04);
+      }
+      fRing.material.opacity=0.10+Math.sin(ft*0.03)*0.06;
+      fl2.position.x=Math.sin(ft*0.025)*4;fl2.position.z=Math.cos(ft*0.025)*4;
+      fr.render(fs,fc2);
+    }
+    fa();
+  })();
 })();
+  // Final
 
-// ══════════════════════════════════════════════════════
-// HERO PARTICLES
-// ══════════════════════════════════════════════════════
-(function(){
-  const cv=document.getElementById('hero-canvas');
-  const ctx=cv.getContext('2d');
-  let W,H,pts=[];
-  function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
-  rsz();window.addEventListener('resize',rsz);
-  for(let i=0;i<100;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:-Math.random()*.35-.08,r:Math.random()*1.4+.4,a:Math.random()*.3+.08});
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(0,229,255,${p.a})`;ctx.fill();
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.y<0)p.y=H;if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-// ══════════════════════════════════════════════════════
-// SCROLL EVENTS
-// ══════════════════════════════════════════════════════
-let frame=0;
-setInterval(()=>{frame++;const el=document.getElementById('frmCtr');if(el)el.textContent='FRAME: '+String(frame).padStart(4,'0');},33);
-
-function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-let cfDone=false,statsDone=false;
-
-window.addEventListener('scroll',()=>{
-  const sy=window.scrollY, ih=window.innerHeight;
-  document.getElementById('pb').style.width=(sy/(document.body.scrollHeight-ih)*100)+'%';
-
-  // Side dots
-  ['hero','car-3d-section','cam-section','esp-section','final'].forEach((id,i)=>{
-    const s=document.getElementById(id);if(!s)return;
-    const inV=sy>=s.offsetTop-ih/2&&sy<s.offsetTop+s.offsetHeight-ih/2;
-    document.querySelectorAll('.side-dot')[i].classList.toggle('active',inV);
-  });
-
-  // CAM
-  const cs=document.getElementById('cam-section');
-  const cp=clamp((sy-cs.offsetTop)/(cs.offsetHeight-ih),0,1);
-  document.getElementById('camFrame').classList.toggle('vis',cp>.05);
-  document.getElementById('camInfo').classList.toggle('vis',cp>.05);
-  if(cp>.25&&!cfDone){
-    cfDone=true;
-    ['bb-bot','bb-per','bb-tbl','bb-mug'].forEach((id,i)=>setTimeout(()=>document.getElementById(id).classList.add('vis'),i*150));
-    document.getElementById('confPanel').classList.add('vis');
-    setTimeout(()=>{document.getElementById('cf1').style.width='94%';},700);
-    setTimeout(()=>{document.getElementById('cf2').style.width='87%';},850);
-    setTimeout(()=>{document.getElementById('cf3').style.width='82%';},1000);
-    setTimeout(()=>{document.getElementById('cf4').style.width='79%';},1150);
-  }
-
-  // ESP
-  const es=document.getElementById('esp-section');
-  const ep=clamp((sy-es.offsetTop)/(es.offsetHeight-ih),0,1);
-  document.getElementById('espWrap').classList.toggle('vis',ep>.1);
-
-  // Stats
-  const ss=document.getElementById('stats');
-  if(!statsDone&&sy+ih>ss.offsetTop+80){
-    statsDone=true;
-    document.querySelectorAll('.stat-card').forEach((c,i)=>{
-      setTimeout(()=>{
-        c.classList.add('vis');
-        if(i===0)animNum('c1',150);
-        if(i===1)animNum('c2',30);
-        if(i===2)animNum('c3',94);
-      },parseInt(c.dataset.d)||0);
-    });
-  }
-
-  // Final
-  const fs=document.getElementById('final');
-  const fv=sy+ih>fs.offsetTop+80;
-  document.getElementById('finalTxt').classList.toggle('vis',fv);
-},{passive:true});
-
-function animNum(id,target){
-  const el=document.getElementById(id);
-  if(!el||el._done)return;el._done=true;
-  let c=0,step=target/60;
-  const t=setInterval(()=>{c+=step;if(c>=target){c=target;clearInterval(t);}el.textContent=Math.round(c);},16);
-}
-
-document.querySelectorAll('.side-dot').forEach(d=>{
-  d.addEventListener('click',()=>{const t=document.getElementById(d.dataset.t);if(t)t.scrollIntoView({behavior:'smooth'});});
-});
 </script>
 </body>
 </html>
